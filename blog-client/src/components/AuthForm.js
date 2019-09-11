@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 
-const AuthForm = ({ signup }) => {
+const AuthForm = ({ onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    onSubmit({ email, password });
+  };
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Email"
@@ -17,7 +21,8 @@ const AuthForm = ({ signup }) => {
           placeholder="Pasword"
           onChange={e => setPassword(e.target.value)}
         />
-        <button onClick={() => signup({ email, password })}>Signup</button>
+        <button onClick={() => onSubmit({ email, password })}>Signup</button>
+        {errorMessage && <div>{errorMessage}</div>}
       </form>
     </div>
   );

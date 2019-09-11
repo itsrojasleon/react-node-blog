@@ -1,14 +1,17 @@
-import React from 'react';
-import { Router } from '@reach/router';
-import IndexScreen from './screens/IndexScreen';
-import SignupScreen from './screens/SignupScreen';
+import React, { useContext, useEffect } from 'react';
+import { Context as AuthContext } from './context/AuthContext';
+import AuthenticatedApp from './AuthenticatedApp';
+import UnauthenticatedApp from './UnauthenticatedApp';
 
 const App = () => {
+  const { state, tryLocalSignin } = useContext(AuthContext);
+
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
+
   return (
-    <Router>
-      <IndexScreen path="/" />
-      <SignupScreen path="signup" />
-    </Router>
+    <div>{state.token ? <AuthenticatedApp /> : <UnauthenticatedApp />}</div>
   );
 };
 export default App;

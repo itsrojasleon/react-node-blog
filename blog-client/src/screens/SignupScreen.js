@@ -4,11 +4,12 @@ import AuthForm from '../components/AuthForm';
 import { Link } from '@reach/router';
 
 const SignupScreen = () => {
-  const { signup } = useContext(AuthContext);
+  const { state, signup } = useContext(AuthContext);
+
   return (
     <div>
       <h2>Signup</h2>
-      <AuthForm onSubmit={signup} />
+      <AuthForm onSubmit={signup} errorMessage={state.errorMessage} />
       <Link to="/">Home</Link>
     </div>
   );
