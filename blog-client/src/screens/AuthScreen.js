@@ -1,13 +1,9 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import AuthForm from '../components/AuthForm';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const AuthScreen = () => {
-  const { state, signup, tryLocalSignin } = useContext(AuthContext);
-
-  useEffect(() => {
-    tryLocalSignin();
-  }, []);
+  const { state, signup } = useContext(AuthContext);
 
   return (
     <div>

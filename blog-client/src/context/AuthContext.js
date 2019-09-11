@@ -28,7 +28,7 @@ const signup = dispatch => async ({ email, password }) => {
   try {
     const response = await blogApi.post('/signup', { email, password });
     await window.localStorage.setItem('token', response.data.token);
-    dispatch({ type: 'signup', payload: response.data.token });
+    dispatch({ type: 'signin', payload: response.data.token });
     navigate('/');
   } catch (err) {
     dispatch({ type: 'error', payload: 'Something went wrong with Signup' });

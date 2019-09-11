@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import AuthScreen from './screens/AuthScreen';
-import { Context as AuthContext } from './context/AuthContext';
 
 // Add logic for signup or signin
 
 const UnauthenticatedApp = () => {
-  const { state, signup } = useContext(AuthContext);
-
   return (
     <div>
-      <AuthScreen />
+      <h2>You are unauthenticated</h2>
+      <AuthScreen path="signup" />
     </div>
   );
 };
