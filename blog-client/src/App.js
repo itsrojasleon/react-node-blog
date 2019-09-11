@@ -1,12 +1,14 @@
 import React from 'react';
+import { Router } from '@reach/router';
 import IndexScreen from './screens/IndexScreen';
-import { Provider as AuthProvider } from './context/AuthContext';
+import SignupScreen from './screens/SignupScreen';
 
 const App = () => {
   return (
-    <AuthProvider>
-      <IndexScreen />
-    </AuthProvider>
+    <Router>
+      <IndexScreen path="/" />
+      <SignupScreen path="signup" />
+    </Router>
   );
 };
 export default App;
