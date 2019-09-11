@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AuthScreen from './screens/AuthScreen';
+import { Context as AuthContext } from './context/AuthContext';
+
+// Add logic for signup or signin
 
 const UnauthenticatedApp = () => {
+  const { state, signup } = useContext(AuthContext);
+
   return (
     <div>
-      <div>UnauthenticatedApp</div>
+      <AuthScreen />
     </div>
   );
 };

@@ -16,7 +16,12 @@ const authReducer = (state, action) => {
 
 const tryLocalSignin = dispatch => () => {
   const token = window.localStorage.getItem('token');
-  return token ? dispatch({ type: 'signin', payload: token }) : null;
+
+  if (token) {
+    dispatch({ type: 'signin', payload: token });
+  } else {
+    return null;
+  }
 };
 
 const signup = dispatch => async ({ email, password }) => {

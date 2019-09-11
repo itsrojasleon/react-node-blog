@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 
-const AuthForm = ({ onSubmit, errorMessage }) => {
+const AuthForm = ({ title, onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    onSubmit({ email, password });
-  };
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   onSubmit({ email, password });
+  // };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <h3>{title}</h3>
+      <div>
         <input
           type="text"
           placeholder="Email"
@@ -23,7 +24,7 @@ const AuthForm = ({ onSubmit, errorMessage }) => {
         />
         <button onClick={() => onSubmit({ email, password })}>Signup</button>
         {errorMessage && <div>{errorMessage}</div>}
-      </form>
+      </div>
     </div>
   );
 };
