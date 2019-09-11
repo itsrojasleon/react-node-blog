@@ -4,10 +4,6 @@ const AuthForm = ({ title, onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   onSubmit({ email, password });
-  // };
   return (
     <div>
       <h3>{title}</h3>
@@ -22,7 +18,7 @@ const AuthForm = ({ title, onSubmit, errorMessage }) => {
           placeholder="Pasword"
           onChange={e => setPassword(e.target.value)}
         />
-        <button onClick={() => onSubmit({ email, password })}>Signup</button>
+        <button onClick={() => onSubmit({ email, password })}>{title}</button>
         {errorMessage && <div>{errorMessage}</div>}
       </div>
     </div>

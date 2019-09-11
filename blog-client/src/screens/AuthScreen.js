@@ -3,7 +3,7 @@ import AuthForm from '../components/AuthForm';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const AuthScreen = () => {
-  const { state, signup } = useContext(AuthContext);
+  const { state, signup, signin } = useContext(AuthContext);
 
   return (
     <div>
@@ -11,6 +11,13 @@ const AuthScreen = () => {
       <AuthForm
         title="Signup"
         onSubmit={signup}
+        errorMessage={state.errorMessage}
+      />
+      <br />
+      <div>Or</div>
+      <AuthForm
+        title="Signin"
+        onSubmit={signin}
         errorMessage={state.errorMessage}
       />
     </div>

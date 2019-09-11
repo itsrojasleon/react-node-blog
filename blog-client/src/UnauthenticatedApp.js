@@ -7,7 +7,7 @@ const UnauthenticatedApp = () => {
   return (
     <div>
       <h2>You are unauthenticated</h2>
-      <AuthScreen path="signup" />
+      <AuthScreen />
     </div>
   );
 };
