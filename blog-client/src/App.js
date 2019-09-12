@@ -1,4 +1,6 @@
 import React, { Suspense, lazy, useContext, useEffect } from 'react';
+import { Provider as AuthProvider } from './context/AuthContext';
+import { Provider as BlogProvider } from './context/BlogContext';
 import { Context as AuthContext } from './context/AuthContext';
 
 const AuthenticatedApp = lazy(() => import('./AuthenticatedApp'));
@@ -6,14 +8,18 @@ const UnauthenticatedApp = lazy(() => import('./UnauthenticatedApp'));
 
 const App = () => {
   const { state, tryLocalSignin } = useContext(AuthContext);
-
+  console.log(state);
   useEffect(() => {
     tryLocalSignin();
   }, []);
 
   return (
     <Suspense fallback={<div>LOADING...</div>}>
-      {state.token ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      <AuthProvider>
+        <BlogProvider>
+          {state.token ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+        </BlogProvider>
+      </AuthProvider>
     </Suspense>
   );
 };

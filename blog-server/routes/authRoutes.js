@@ -22,16 +22,13 @@ router.post('/signup', async (req, res) => {
 });
 
 router.post('/signin', async (req, res) => {
-  const {
-    email: { email, password }
-  } = req.body;
+  const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(422).send({ error: 'Must provide email and password' });
   }
 
   User.findOne({ email }, (err, user) => {
-    console.log('user');
     if (!user) {
       return res.status(422).send({ error: 'Invalid password or email' });
     }

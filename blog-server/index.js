@@ -1,10 +1,12 @@
 require('./models/User');
+require('./models/Blog');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const keys = require('./config/keys');
 const authRouter = require('./routes/authRoutes');
+const blogRouter = require('./routes/blogRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
@@ -12,6 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(authRouter);
+app.use(blogRouter);
 
 const mongoUri = keys.mongoURI;
 

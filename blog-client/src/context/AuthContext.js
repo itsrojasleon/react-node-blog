@@ -1,6 +1,5 @@
 import createDataContext from './createDataContext';
 import blogApi from '../api/blog';
-// import { useLocalStorage } from '../hooks/useLocalStorage';
 import { navigate } from '@reach/router';
 
 const authReducer = (state, action) => {
@@ -37,7 +36,7 @@ const signup = dispatch => async ({ email, password }) => {
   }
 };
 
-const signin = dispatch => async (email, password) => {
+const signin = dispatch => async ({ email, password }) => {
   try {
     const response = await blogApi.post('/signin', { email, password });
     await window.localStorage.setItem('token', response.data.token);
