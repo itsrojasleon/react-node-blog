@@ -31,11 +31,9 @@ const createBlog = dispatch => async ({ title, content, image }) => {
   }
 };
 
-const deleteBlog = dispatch => async ({ id }) => {
+const deleteBlog = dispatch => async id => {
+  dispatch({ type: 'delete_blog', payload: id });
   try {
-    // To be honest, I don't know why this should be like this...
-    // This doesn't work if I switch first the request and then the dispatch
-    dispatch({ type: 'delete_blog', payload: id });
     await blogApi.delete(`/blogs/${id}`);
   } catch (err) {
     console.log('Frontend', err);

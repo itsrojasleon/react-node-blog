@@ -5,7 +5,7 @@ const BlogDetail = ({ onDelete, title, content, image, _id }) => {
     <div style={{ border: '1px solid #ccc', margin: '10px', padding: '10px' }}>
       <h3>{title}</h3>
       <p>{content}</p>
-      <button onClick={() => onDelete({ id: _id })}>Delete</button>
+      <button onClick={() => onDelete(_id)}>Delete</button>
     </div>
   );
 };
