@@ -15,7 +15,14 @@ const IndexScreen = () => {
       <Link to="/create">Create</Link>
       {state.length > 0 &&
         state.map(blog => (
-          <div style={{ border: '1px solid #ccc' }} key={blog.title}>
+          <div
+            style={{
+              border: '1px solid #ccc',
+              margin: '10px',
+              padding: '10px'
+            }}
+            key={blog.title}
+          >
             <div>{blog.title}</div>
             <div>{blog.content}</div>
             <div>{blog.image}</div>

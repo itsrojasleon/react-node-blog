@@ -9,19 +9,19 @@ const BlogForm = ({ onSubmit }) => {
     <div>
       <input
         type="text"
-        placeholder=""
+        placeholder="title"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
       <input
         type="text"
-        placeholder=""
+        placeholder="content"
         value={content}
         onChange={e => setContent(e.target.value)}
       />
       <input
         type="text"
-        placeholder=""
+        placeholder="image url"
         value={image}
         onChange={e => setImage(e.target.value)}
       />

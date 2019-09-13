@@ -1,5 +1,6 @@
 import createDataContext from './createDataContext';
 import blogApi from '../api/blog';
+import { navigate } from '@reach/router';
 
 const blogReducer = (state, action) => {
   switch (action.type) {
@@ -18,6 +19,7 @@ const fetchBlogs = dispatch => async () => {
 const createBlog = dispatch => async ({ title, content, image }) => {
   try {
     await blogApi.post('/blogs', { title, content, image });
+    navigate('/');
   } catch (err) {
     console.log(err);
   }
