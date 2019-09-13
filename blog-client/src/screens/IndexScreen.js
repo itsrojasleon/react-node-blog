@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react';
-import { Link } from '@reach/router';
+import React, { Suspense, lazy, useContext, useEffect } from 'react';
 import { Context as BlogContext } from '../context/BlogContext';
+const BlogDetail = lazy(() => import('../components/BlogDetail'));
 
 const IndexScreen = () => {
-  const { state, fetchBlogs, createBlog } = useContext(BlogContext);
+  const { state, fetchBlogs, deleteBlog } = useContext(BlogContext);
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -12,23 +13,11 @@ const IndexScreen = () => {
     <div>
       <h1>Index Page</h1>
       <div>You are authenticated</div>
-      <Link to="/create">Create</Link>
-      {state.length > 0 &&
-        state.map(blog => (
-          <div
-            style={{
-              border: '1px solid #ccc',
-              margin: '10px',
-              padding: '10px'
-            }}
-            key={blog.title}
-          >
-            <div>{blog.title}</div>
-            <div>{blog.content}</div>
-            <div>{blog.image}</div>
-          </div>
-        ))}
-      <Link to="account">Account</Link>
+      {state.map(blog => (
+        <Suspense key={blog._id} fallback={<h2>Loading...</h2>}>
+          <BlogDetail {...blog} onDelete={deleteBlog} />
+        </Suspense>
+      ))}
     </div>
   );
 };

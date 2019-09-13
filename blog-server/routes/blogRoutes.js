@@ -10,7 +10,6 @@ router.use(requireAuth);
 
 router.get('/blogs', async (req, res) => {
   const blogs = await Blog.find({ userId: req.user._id });
-
   res.send(blogs);
 });
 
@@ -33,4 +32,19 @@ router.post('/blogs', async (req, res) => {
     res.status(422).send({ error: err.message });
   }
 });
+
+router.delete('/blogs/:id', (req, res) => {
+  const { id } = req.params;
+
+  try {
+    Blog.deleteOne({ _id: id }, err => {
+      if (err) {
+        console.log('Backend', err);
+      }
+    });
+  } catch (err) {
+    res.status(422).send({ err });
+  }
+});
+
 module.exports = router;

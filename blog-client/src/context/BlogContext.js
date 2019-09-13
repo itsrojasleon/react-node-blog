@@ -6,14 +6,20 @@ const blogReducer = (state, action) => {
   switch (action.type) {
     case 'fetch_blogs':
       return action.payload;
+    case 'delete_blog':
+      return state.filter(blog => blog._id !== action.payload);
     default:
       return state;
   }
 };
 
 const fetchBlogs = dispatch => async () => {
-  const response = await blogApi.get('/blogs');
-  dispatch({ type: 'fetch_blogs', payload: response.data });
+  try {
+    const response = await blogApi.get('/blogs');
+    dispatch({ type: 'fetch_blogs', payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const createBlog = dispatch => async ({ title, content, image }) => {
@@ -25,8 +31,17 @@ const createBlog = dispatch => async ({ title, content, image }) => {
   }
 };
 
+const deleteBlog = dispatch => async id => {
+  dispatch({ type: 'delete_blog', payload: id });
+  try {
+    await blogApi.delete(`/blogs/${id}`);
+  } catch (err) {
+    console.log('Frontend', err);
+  }
+};
+
 export const { Provider, Context } = createDataContext(
   blogReducer,
-  { fetchBlogs, createBlog },
+  { fetchBlogs, createBlog, deleteBlog },
   []
 );
