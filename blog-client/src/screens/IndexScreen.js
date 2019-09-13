@@ -3,7 +3,8 @@ import { Link } from '@reach/router';
 import { Context as BlogContext } from '../context/BlogContext';
 
 const IndexScreen = () => {
-  const { state, fetchBlogs, createBlog } = useContext(BlogContext);
+  const { state, fetchBlogs, deleteBlog } = useContext(BlogContext);
+
   useEffect(() => {
     fetchBlogs();
   }, []);
@@ -21,11 +22,15 @@ const IndexScreen = () => {
               margin: '10px',
               padding: '10px'
             }}
-            key={blog.title}
+            key={blog._id}
           >
             <div>{blog.title}</div>
             <div>{blog.content}</div>
             <div>{blog.image}</div>
+            <div>{blog._id}</div>
+            <button onClick={() => deleteBlog({ id: blog._id })}>
+              Delete Blog
+            </button>
           </div>
         ))}
       <Link to="account">Account</Link>
