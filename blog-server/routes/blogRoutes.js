@@ -17,15 +17,17 @@ router.get('/blogs', async (req, res) => {
 router.post('/blogs', async (req, res) => {
   const { title, content, image } = req.body;
 
-  if (!title || content) {
+  if (!title || !content) {
     return res
       .status(422)
       .send({ error: 'You must provide a title and a content' });
   }
 
   try {
-    const blog = new Track({ title, content, userId: req.user._id, image });
-    await blog.save();
+    const blog = new Blog({ title, content, userId: req.user._id, image });
+    blog.save(err => {
+      if (err) console.log(err);
+    });
     res.send(blog);
   } catch (err) {
     res.status(422).send({ error: err.message });

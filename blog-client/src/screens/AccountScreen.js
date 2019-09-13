@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import { Context as AuthContext } from '../context/AuthContext';
 
 const AccountScreen = () => {
-  const { state, signout } = useContext(AuthContext);
-  // console.log(state);
+  const { signout } = useContext(AuthContext);
   return (
     <div>
       <div>Hello there</div>

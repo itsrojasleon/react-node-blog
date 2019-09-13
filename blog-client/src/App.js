@@ -8,7 +8,6 @@ const UnauthenticatedApp = lazy(() => import('./UnauthenticatedApp'));
 
 const App = () => {
   const { state, tryLocalSignin } = useContext(AuthContext);
-  console.log(state);
   useEffect(() => {
     tryLocalSignin();
   }, []);

@@ -15,7 +15,7 @@ const fetchBlogs = dispatch => async () => {
   dispatch({ type: 'fetch_blogs', payload: response.data });
 };
 
-const createBlog = dispatch => async (title, content, image) => {
+const createBlog = dispatch => async ({ title, content, image }) => {
   try {
     await blogApi.post('/blogs', { title, content, image });
   } catch (err) {
