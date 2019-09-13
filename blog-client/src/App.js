@@ -6,17 +6,15 @@ const AuthenticatedApp = lazy(() => import('./AuthenticatedApp'));
 const UnauthenticatedApp = lazy(() => import('./UnauthenticatedApp'));
 
 const App = () => {
-  // const { state, tryLocalSignin } = useContext(AuthContext);
-  const { state } = useContext(BlogContext);
-  console.log(state);
+  const { state, tryLocalSignin } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   tryLocalSignin();
-  // }, []);
+  useEffect(() => {
+    tryLocalSignin();
+  }, []);
 
   return (
     <Suspense fallback={<div>LOADING...</div>}>
-      {'sds' ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+      {state.token ? <AuthenticatedApp /> : <UnauthenticatedApp />}
     </Suspense>
   );
 };

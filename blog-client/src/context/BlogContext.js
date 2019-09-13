@@ -14,8 +14,12 @@ const blogReducer = (state, action) => {
 };
 
 const fetchBlogs = dispatch => async () => {
-  const response = await blogApi.get('/blogs');
-  dispatch({ type: 'fetch_blogs', payload: response.data });
+  try {
+    const response = await blogApi.get('/blogs');
+    dispatch({ type: 'fetch_blogs', payload: response.data });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const createBlog = dispatch => async ({ title, content, image }) => {
@@ -29,8 +33,10 @@ const createBlog = dispatch => async ({ title, content, image }) => {
 
 const deleteBlog = dispatch => async ({ id }) => {
   try {
-    await blogApi.delete(`/blogs/${id}`);
+    // To be honest, I don't know why this should be like this...
+    // This doesn't work if I switch first the request and then the dispatch
     dispatch({ type: 'delete_blog', payload: id });
+    await blogApi.delete(`/blogs/${id}`);
   } catch (err) {
     console.log('Frontend', err);
   }
