@@ -7,8 +7,16 @@ const blogReducer = (state, action) => {
     case 'fetch_blogs':
       return action.payload;
     case 'update_blog':
+      console.log(action.payload);
       return state.map(blog =>
-        blog._id === action.payload.id ? action.payload : blog
+        blog._id === action.payload.id
+          ? {
+              ...blog,
+              title: action.payload.title,
+              content: action.payload.content,
+              image: action.payload.image
+            }
+          : blog
       );
     case 'delete_blog':
       return state.filter(blog => blog._id !== action.payload);
@@ -35,10 +43,10 @@ const createBlog = dispatch => async ({ title, content, image }) => {
   }
 };
 
-const updateBlog = dispatch => async (id, title, content, image) => {
+const updateBlog = dispatch => async ({ id, title, content, image }) => {
+  dispatch({ type: 'update_blog', payload: { id, title, content, image } });
   try {
     await blogApi.put('/blogs', { id, title, content, image });
-    dispatch({ type: 'update_blog', payload: { id, title, content, image } });
   } catch (err) {
     console.log('FRONTEND', err);
   }

@@ -3,26 +3,34 @@ import { Context as BlogContext } from '../context/BlogContext';
 import BlogForm from '../components/BlogForm';
 
 const EditScreen = ({ location }) => {
-  console.log(location);
   const { state, fetchBlogs, updateBlog } = useContext(BlogContext);
+
+  console.log(state);
+
+  const { id } = location.state;
 
   useEffect(() => {
     fetchBlogs();
   }, []);
 
-  const id = location.state.id;
-
   const blog = state.find(b => b._id === id);
+
+  if (!blog) {
+    return 'loading...';
+  }
 
   return (
     <div>
       <BlogForm
-        onSubmit={updateBlog}
+        onSubmit={({ title, content, image }) =>
+          updateBlog({ id, title, content, image })
+        }
         initialValues={{
           title: blog.title,
           content: blog.content,
           image: blog.image
         }}
+        text="Edit Blog"
       />
     </div>
   );

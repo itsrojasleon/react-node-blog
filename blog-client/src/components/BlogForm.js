@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const BlogForm = ({ onSubmit, initialValues }) => {
+const BlogForm = ({ onSubmit, initialValues, text }) => {
   const [title, setTitle] = useState(initialValues.title);
   const [content, setContent] = useState(initialValues.content);
   const [image, setImage] = useState(initialValues.image);
@@ -13,8 +13,9 @@ const BlogForm = ({ onSubmit, initialValues }) => {
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
-      <input
-        type="text"
+      <textarea
+        rows="4"
+        cols="50"
         placeholder="content"
         value={content}
         onChange={e => setContent(e.target.value)}
@@ -26,7 +27,7 @@ const BlogForm = ({ onSubmit, initialValues }) => {
         onChange={e => setImage(e.target.value)}
       />
       <button onClick={() => onSubmit({ title, content, image })}>
-        Create Blog
+        {text}
       </button>
     </div>
   );

@@ -47,14 +47,22 @@ router.delete('/blogs/:id', (req, res) => {
   }
 });
 
-router.put('/blogs/:id', (req, res) => {
-  const { id } = req.params;
-
+router.put('/blogs', async (req, res) => {
+  const { id, title, content, image } = req.body;
   try {
-    Blog.findByIdAndUpdate({ _id: id }, err => console.log(err));
+    let blog = await Blog.findOne({ _id: id });
+
+    await Blog.updateOne({ _id: id }, { _id: id, title, content, image });
+    await blog.save();
   } catch (err) {
-    console.log(err);
+    res.status(422).send({ err });
   }
+
+  // try {
+  //   Blog.findByIdAndUpdate({ _id: id }, err => console.log(err));
+  // } catch (err) {
+  //   console.log(err);
+  // }
 });
 
 module.exports = router;
