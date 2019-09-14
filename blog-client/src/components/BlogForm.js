@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-const BlogForm = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-  const [image, setImage] = useState('');
+const BlogForm = ({ onSubmit, initialValues }) => {
+  const [title, setTitle] = useState(initialValues.title);
+  const [content, setContent] = useState(initialValues.content);
+  const [image, setImage] = useState(initialValues.image);
 
   return (
     <div>
@@ -30,5 +30,12 @@ const BlogForm = ({ onSubmit }) => {
       </button>
     </div>
   );
+};
+BlogForm.defaultProps = {
+  initialValues: {
+    title: '',
+    content: '',
+    image: ''
+  }
 };
 export default BlogForm;

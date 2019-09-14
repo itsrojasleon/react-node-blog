@@ -47,4 +47,14 @@ router.delete('/blogs/:id', (req, res) => {
   }
 });
 
+router.put('/blogs/:id', (req, res) => {
+  const { id } = req.params;
+
+  try {
+    Blog.findByIdAndUpdate({ _id: id }, err => console.log(err));
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;
