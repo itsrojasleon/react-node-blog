@@ -6,6 +6,18 @@ const blogReducer = (state, action) => {
   switch (action.type) {
     case 'fetch_blogs':
       return action.payload;
+    case 'update_blog':
+      return state.map(blog => {
+        const { id, title, content, image } = action.payload;
+        return blog._id === id
+          ? {
+              ...blog,
+              title,
+              content,
+              image
+            }
+          : blog;
+      });
     case 'delete_blog':
       return state.filter(blog => blog._id !== action.payload);
     default:
@@ -31,6 +43,16 @@ const createBlog = dispatch => async ({ title, content, image }) => {
   }
 };
 
+const updateBlog = dispatch => async ({ id, title, content, image }) => {
+  dispatch({ type: 'update_blog', payload: { id, title, content, image } });
+  window.history.back();
+  try {
+    await blogApi.put('/blogs', { id, title, content, image });
+  } catch (err) {
+    console.log('FRONTEND', err);
+  }
+};
+
 const deleteBlog = dispatch => async id => {
   dispatch({ type: 'delete_blog', payload: id });
   try {
@@ -42,6 +64,6 @@ const deleteBlog = dispatch => async id => {
 
 export const { Provider, Context } = createDataContext(
   blogReducer,
-  { fetchBlogs, createBlog, deleteBlog },
+  { fetchBlogs, createBlog, updateBlog, deleteBlog },
   []
 );
