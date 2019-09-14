@@ -7,17 +7,17 @@ const blogReducer = (state, action) => {
     case 'fetch_blogs':
       return action.payload;
     case 'update_blog':
-      console.log(action.payload);
-      return state.map(blog =>
-        blog._id === action.payload.id
+      return state.map(blog => {
+        const { id, title, content, image } = action.payload;
+        return blog._id === id
           ? {
               ...blog,
-              title: action.payload.title,
-              content: action.payload.content,
-              image: action.payload.image
+              title,
+              content,
+              image
             }
-          : blog
-      );
+          : blog;
+      });
     case 'delete_blog':
       return state.filter(blog => blog._id !== action.payload);
     default:
