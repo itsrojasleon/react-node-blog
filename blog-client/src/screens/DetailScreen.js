@@ -4,7 +4,7 @@ import { stringToUrl } from '../utils/string-to-url';
 import { Link } from '@reach/router';
 
 const DetailScreen = ({ location }) => {
-  const { state, fetchBlogs, updateBlog } = useContext(BlogContext);
+  const { state, fetchBlogs } = useContext(BlogContext);
 
   useEffect(() => {
     fetchBlogs();

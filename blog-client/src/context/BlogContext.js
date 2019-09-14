@@ -45,6 +45,7 @@ const createBlog = dispatch => async ({ title, content, image }) => {
 
 const updateBlog = dispatch => async ({ id, title, content, image }) => {
   dispatch({ type: 'update_blog', payload: { id, title, content, image } });
+  window.history.back();
   try {
     await blogApi.put('/blogs', { id, title, content, image });
   } catch (err) {

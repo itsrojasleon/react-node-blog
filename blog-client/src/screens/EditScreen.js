@@ -5,8 +5,6 @@ import BlogForm from '../components/BlogForm';
 const EditScreen = ({ location }) => {
   const { state, fetchBlogs, updateBlog } = useContext(BlogContext);
 
-  console.log(state);
-
   const { id } = location.state;
 
   useEffect(() => {
