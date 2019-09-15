@@ -26,6 +26,13 @@ export const NavLink = styled(Link)`
   align-items: center;
 `;
 
+export const Title = styled.h2`
+  color: rgb(121, 104, 236);
+`;
+export const Text = styled.p`
+  color: rgb(100, 100, 100);
+  line-height: 25px;
+`;
 export const Image = styled.img`
   width: 100%;
   border-radius: 3px;
