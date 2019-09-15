@@ -22,5 +22,6 @@ export const Nav = styled.nav`
 export const NavLink = styled(Link)`
   color: red;
   text-decoration: none;
-  color: rgb(50, 50, 50);
+  display: flex;
+  align-items: center;
 `;
