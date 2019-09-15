@@ -26,8 +26,15 @@ export const NavLink = styled(Link)`
   align-items: center;
 `;
 
+export const Box = styled.div`
+  border: 1px solid rgb(240, 240, 240);
+  margin-bottom: 10px;
+  padding: 10px;
+`;
+
 export const Title = styled.h2`
   color: rgb(121, 104, 236);
+  margin: ${props => (props.margin ? 0 : null)};
 `;
 export const Text = styled.p`
   color: rgb(100, 100, 100);
