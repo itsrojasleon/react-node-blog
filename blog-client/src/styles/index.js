@@ -17,6 +17,7 @@ export const Nav = styled.nav`
   display: flex;
   margin: auto;
   justify-content: space-between;
+  align-items: center;
 `;
 export const NavLink = styled(Link)`
   color: red;
