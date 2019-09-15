@@ -1,6 +1,8 @@
 import React, { Suspense, lazy } from 'react';
 import { Router } from '@reach/router';
 
+import { Container } from './styles/index';
+
 const AccountScreen = lazy(() => import('./screens/AccountScreen'));
 const IndexScreen = lazy(() => import('./screens/IndexScreen'));
 const CreateScreen = lazy(() => import('./screens/CreateScreen'));
@@ -12,13 +14,15 @@ const AuthenticatedApp = () => {
   return (
     <Suspense fallback={null}>
       <Header />
-      <Router>
-        <IndexScreen path="/" />
-        <DetailScreen path="/:id" />
-        <CreateScreen path="create" />
-        <EditScreen path="/edit/:id" />
-        <AccountScreen path="account" />
-      </Router>
+      <Container>
+        <Router>
+          <IndexScreen path="/" />
+          <DetailScreen path="/:id" />
+          <CreateScreen path="create" />
+          <EditScreen path="/edit/:id" />
+          <AccountScreen path="account" />
+        </Router>
+      </Container>
     </Suspense>
   );
 };
