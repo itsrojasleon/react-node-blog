@@ -25,3 +25,8 @@ export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
 `;
+
+export const Image = styled.img`
+  width: 100%;
+  border-radius: 3px;
+`;
