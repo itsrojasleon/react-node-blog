@@ -58,8 +58,23 @@ export const Time = styled.span`
 `;
 export const IconContainer = styled.span`
   font-size: 22px;
+  color: rgb(130, 130, 130);
   &:hover {
     color: #e53935;
     cursor: pointer;
+  }
+`;
+export const Edit = styled.span`
+  background-color: rgb(121, 104, 236);
+  color: white;
+  border-radius: 4px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.8;
   }
 `;

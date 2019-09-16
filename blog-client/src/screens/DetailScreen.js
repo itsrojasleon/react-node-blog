@@ -3,7 +3,8 @@ import { Context as BlogContext } from '../context/BlogContext';
 import { stringToUrl } from '../utils/string-to-url';
 import { firstCapitalLetter } from '../utils/first-capital-letter';
 import { Link } from '@reach/router';
-import { Title, Text, Image } from '../styles/index';
+import { Title, Text, Image, Edit } from '../styles/index';
+import { FiEdit2 } from 'react-icons/fi';
 
 const DetailScreen = ({ location }) => {
   const { state, fetchBlogs } = useContext(BlogContext);
@@ -27,11 +28,13 @@ const DetailScreen = ({ location }) => {
         alt={blog.title}
       />
       <Text>{blog.content}</Text>
-      <div>
-        <Link to={`/edit/${stringToUrl(blog.title)}`} state={{ id: blog._id }}>
-          Edit this blog
-        </Link>
-      </div>
+      <Link to={`/edit/${stringToUrl(blog.title)}`} state={{ id: blog._id }}>
+        <Edit>
+          <>
+            <FiEdit2 style={{ marginRight: '10px' }} /> Edit this blog
+          </>
+        </Edit>
+      </Link>
     </div>
   );
 };

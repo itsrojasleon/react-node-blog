@@ -7,7 +7,7 @@ import { showSomeContent } from '../utils/show-some-content';
 import { Title, Box, IconContainer, Time } from '../styles/index';
 import { FiTrash2 } from 'react-icons/fi';
 
-const BlogDetail = ({ title, content, image, _id, onDelete }) => {
+const BlogDetail = ({ title, content, _id, onDelete }) => {
   const time = timeToRead(content);
 
   return (
