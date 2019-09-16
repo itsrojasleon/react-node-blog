@@ -1,14 +1,37 @@
 import React from 'react';
-import { Link } from '@reach/router';
 import { Navbar, Nav, NavLink } from '../styles/index';
+import { FiSettings, FiPlusCircle, FiHome } from 'react-icons/fi';
 
 const Header = () => {
+  const iconStyle = {
+    marginRight: '3px'
+  };
+
+  const Link = props => (
+    <NavLink
+      {...props}
+      getProps={({ isCurrent }) => {
+        return {
+          style: {
+            color: isCurrent ? 'rgb(121,104,236)' : 'rgb(50, 50, 50)'
+          }
+        };
+      }}
+    ></NavLink>
+  );
+
   return (
     <Navbar>
       <Nav>
-        <NavLink to="">Home</NavLink>
-        <NavLink to="create">Create</NavLink>
-        <NavLink to="account">Account</NavLink>
+        <Link to="">
+          <FiHome style={iconStyle} /> Home
+        </Link>
+        <Link to="create">
+          <FiPlusCircle style={iconStyle} /> Create
+        </Link>
+        <Link to="account">
+          <FiSettings style={iconStyle} /> Account
+        </Link>
       </Nav>
     </Navbar>
   );

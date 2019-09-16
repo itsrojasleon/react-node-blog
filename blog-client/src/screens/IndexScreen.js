@@ -11,8 +11,7 @@ const IndexScreen = () => {
 
   return (
     <div>
-      <h1>Index Page</h1>
-      <div>You are authenticated</div>
+      <h1>My blogs</h1>
       {state.map(blog => (
         <Suspense key={blog._id} fallback={<h2>Loading...</h2>}>
           <BlogDetail {...blog} onDelete={deleteBlog} />
