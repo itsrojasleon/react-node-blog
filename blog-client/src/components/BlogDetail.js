@@ -3,18 +3,25 @@ import { Link } from '@reach/router';
 import { stringToUrl } from '../utils/string-to-url';
 import { timeToRead } from '../utils/time-to-read';
 import { firstCapitalLetter } from '../utils/first-capital-letter';
-import { Title, Box } from '../styles/index';
+import { showSomeContent } from '../utils/show-some-content';
+import { Title, Box, IconContainer, Time } from '../styles/index';
+import { FiTrash2 } from 'react-icons/fi';
 
-const BlogDetail = ({ onDelete, title, content, image, _id }) => {
+const BlogDetail = ({ title, content, image, _id, onDelete }) => {
   const time = timeToRead(content);
 
   return (
     <Box>
-      <Link to={`${stringToUrl(title)}`} state={{ id: _id }}>
-        <Title margin>{firstCapitalLetter(title)}</Title>
-      </Link>
-      <p>{time ? time : 1} min</p>
-      <button onClick={() => onDelete(_id)}>Delete</button>
+      <div>
+        <Link to={`${stringToUrl(title)}`} state={{ id: _id }}>
+          <Title margin>{firstCapitalLetter(title)}</Title>
+        </Link>
+        <p>{showSomeContent(content)}...</p>
+        <Time>{time ? time : 1} min</Time>
+      </div>
+      <IconContainer>
+        <FiTrash2 onClick={() => onDelete(_id)} />
+      </IconContainer>
     </Box>
   );
 };
