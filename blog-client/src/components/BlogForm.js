@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Input, TextArea } from '../styles/index';
 
 const BlogForm = ({ onSubmit, initialValues, text }) => {
   const [title, setTitle] = useState(initialValues.title);
@@ -6,30 +7,30 @@ const BlogForm = ({ onSubmit, initialValues, text }) => {
   const [image, setImage] = useState(initialValues.image);
 
   return (
-    <div>
-      <input
+    <Form>
+      <Input
         type="text"
-        placeholder="title"
+        placeholder="Title"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
-      <textarea
-        rows="4"
+      <TextArea
+        rows="15"
         cols="50"
-        placeholder="content"
+        placeholder="Content"
         value={content}
         onChange={e => setContent(e.target.value)}
       />
-      <input
+      <Input
         type="text"
-        placeholder="image url"
+        placeholder="Image URL"
         value={image}
         onChange={e => setImage(e.target.value)}
       />
       <button onClick={() => onSubmit({ title, content, image })}>
         {text}
       </button>
-    </div>
+    </Form>
   );
 };
 BlogForm.defaultProps = {

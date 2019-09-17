@@ -78,3 +78,27 @@ export const Edit = styled.span`
     opacity: 0.8;
   }
 `;
+
+export const Form = styled.div`
+  width: 100%;
+`;
+export const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 17px;
+  border: 1px solid rgb(235, 235, 235);
+  margin-bottom: 10px;
+  &:focus {
+    outline: 0;
+  }
+`;
+export const TextArea = styled.textarea`
+  width: 100%;
+  border: 1px solid rgb(235, 235, 235);
+  font-size: 17px;
+  margin-bottom: 10px;
+  &:focus {
+    outline: 0;
+  }
+`;
