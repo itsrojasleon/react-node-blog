@@ -40,6 +40,9 @@ export const Box = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+export const Content = styled.p`
+  color: rgb(60, 60, 60);
+`;
 
 export const Title = styled.h2`
   color: rgb(121, 104, 236);
@@ -55,10 +58,12 @@ export const Image = styled.img`
 `;
 export const Time = styled.span`
   color: rgb(130, 130, 130);
+  font-weight: lighter;
 `;
 export const IconContainer = styled.span`
   font-size: 22px;
   color: rgb(130, 130, 130);
+  font-weight: lighter;
   &:hover {
     color: #e53935;
     cursor: pointer;
