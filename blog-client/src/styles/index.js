@@ -131,4 +131,24 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`;
+
+export const AuthWrapper = styled.div`
+  width: 70%;
+  margin: auto;
+  @media (max-width: 769px) {
+    width: 90%;
+  }
+`;
+export const Instead = styled.p`
+  color: rgb(100, 100, 100);
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `;

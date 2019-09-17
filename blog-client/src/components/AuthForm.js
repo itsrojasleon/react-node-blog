@@ -1,27 +1,31 @@
 import React, { useState } from 'react';
+import { Input, Form, Label, Button, Title, Text } from '../styles/index';
 
-const AuthForm = ({ title, onSubmit, errorMessage }) => {
+const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <Form>
+      <Title>{title}</Title>
+      <Text>{subtitle}</Text>
       <div>
-        <input
+        <Label>Email</Label>
+        <Input
           type="text"
           placeholder="Email"
           onChange={e => setEmail(e.target.value)}
         />
-        <input
+        <Label>Password</Label>
+        <Input
           type="password"
           placeholder="Pasword"
           onChange={e => setPassword(e.target.value)}
         />
-        <button onClick={() => onSubmit({ email, password })}>{title}</button>
+        <Button onClick={() => onSubmit({ email, password })}>{title}</Button>
         {errorMessage && <div>{errorMessage}</div>}
       </div>
-    </div>
+    </Form>
   );
 };
 
