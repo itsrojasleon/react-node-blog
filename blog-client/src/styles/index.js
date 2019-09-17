@@ -82,6 +82,12 @@ export const Edit = styled.span`
 export const Form = styled.div`
   width: 100%;
 `;
+export const Label = styled.div`
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  color: rgb(50, 50, 50);
+`;
 export const Input = styled.input`
   width: 100%;
   padding: 10px;
@@ -89,6 +95,7 @@ export const Input = styled.input`
   font-size: 17px;
   border: 1px solid rgb(235, 235, 235);
   margin-bottom: 10px;
+  color: rgb(80, 80, 80);
   &:focus {
     outline: 0;
   }
@@ -98,7 +105,25 @@ export const TextArea = styled.textarea`
   border: 1px solid rgb(235, 235, 235);
   font-size: 17px;
   margin-bottom: 10px;
+  color: rgb(80, 80, 80);
   &:focus {
     outline: 0;
   }
+`;
+export const Buttons = styled.div`
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+`;
+export const Button = styled.button`
+  background-color: ${props =>
+    props.black ? 'rgb(95,101,114)' : 'rgb(121, 104, 236)'};
+  color: white;
+  padding: 9px 22px;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;

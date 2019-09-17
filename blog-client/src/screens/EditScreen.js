@@ -28,7 +28,8 @@ const EditScreen = ({ location }) => {
           content: blog.content,
           image: blog.image
         }}
-        text="Edit Blog"
+        text="Confirm changes"
+        editing
       />
     </div>
   );
