@@ -6,13 +6,15 @@ const User = mongoose.model('User');
 const router = express.Router();
 
 router.post('/signup', async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, username } = req.body;
 
   try {
-    const user = new User({ email, password });
-    user.save();
+    const user = new User({ email, password, username });
+    await user.save(err => {
+      if (err) console.log('Something went wrong saving the user!', err);
+    });
     const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
-    res.send({ token });
+    res.send({ token, username });
   } catch (err) {
     return res.status(422).send(err.message);
   }

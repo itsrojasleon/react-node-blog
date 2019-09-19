@@ -7,7 +7,7 @@ const authReducer = (state, action) => {
     case 'signin':
       return { token: action.payload, errorMessage: '' };
     case 'signout':
-      return { token: null, errorMessage: '' };
+      return { token: null, errorMessage: '', username: '' };
     case 'error':
       return { ...state, errorMessage: action.payload };
     default:
@@ -25,13 +25,19 @@ const tryLocalSignin = dispatch => () => {
   }
 };
 
-const signup = dispatch => async ({ email, password }) => {
+const signup = dispatch => async ({ email, password, username }) => {
   try {
-    const response = await blogApi.post('/signup', { email, password });
-    await window.localStorage.setItem('token', response.data.token);
-    dispatch({ type: 'signin', payload: response.data.token });
+    const response = await blogApi.post('/signup', {
+      email,
+      password,
+      username
+    });
+    const { token } = response.data;
+    await window.localStorage.setItem('token', token);
+    dispatch({ type: 'signin', payload: token });
     navigate('/');
   } catch (err) {
+    console.log(err);
     dispatch({ type: 'error', payload: 'Something went wrong with Signup' });
   }
 };
@@ -56,5 +62,5 @@ const signout = dispatch => async () => {
 export const { Provider, Context } = createDataContext(
   authReducer,
   { signup, signin, signout, tryLocalSignin },
-  { token: null, errorMessage: '' }
+  { token: null, username: '', errorMessage: '' }
 );

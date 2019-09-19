@@ -12,7 +12,7 @@ import {
 const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [disabled, setDisabled] = useState(true);
+  const [username, setUsername] = useState('');
 
   return (
     <Form>
@@ -24,11 +24,7 @@ const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
           type="text"
           placeholder="Email"
           value={email}
-          onChange={event => {
-            setEmail(event.target.value);
-            if (email.length > 5) setDisabled(false);
-            else setDisabled(true);
-          }}
+          onChange={event => setEmail(event.target.value)}
           required
           name="email"
         />
@@ -37,18 +33,19 @@ const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
           type="password"
           placeholder="Pasword"
           value={password}
-          onChange={event => {
-            setPassword(event.target.value);
-            if (password.length > 5) setDisabled(false);
-            else setDisabled(true);
-          }}
+          onChange={event => setPassword(event.target.value)}
           required
           name="password"
         />
-        <Button
-          disabled={disabled}
-          onClick={() => onSubmit({ email, password })}
-        >
+        <Label>Username</Label>
+        <Input
+          type="text"
+          placeholder="Your best username"
+          value={username}
+          onChange={event => setUsername(event.target.value)}
+          name="password"
+        />
+        <Button onClick={() => onSubmit({ email, password, username })}>
           {title}
         </Button>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

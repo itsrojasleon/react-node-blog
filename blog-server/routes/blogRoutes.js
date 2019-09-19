@@ -10,7 +10,7 @@ router.use(requireAuth);
 
 router.get('/blogs', async (req, res) => {
   const blogs = await Blog.find({ userId: req.user._id });
-  res.send(blogs);
+  if (blogs) res.send(blogs);
 });
 
 router.post('/blogs', async (req, res) => {
