@@ -37,7 +37,6 @@ const signup = dispatch => async ({ email, password, username }) => {
     dispatch({ type: 'signin', payload: token });
     navigate('/');
   } catch (err) {
-    console.log(err);
     dispatch({ type: 'error', payload: 'Something went wrong with Signup' });
   }
 };

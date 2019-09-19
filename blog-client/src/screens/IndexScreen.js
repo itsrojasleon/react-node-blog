@@ -1,5 +1,7 @@
 import React, { Suspense, lazy, useContext, useEffect } from 'react';
 import { Context as BlogContext } from '../context/BlogContext';
+import { Link } from '@reach/router';
+import { Text } from '../styles';
 const BlogDetail = lazy(() => import('../components/BlogDetail'));
 
 const IndexScreen = () => {
@@ -11,7 +13,11 @@ const IndexScreen = () => {
 
   return (
     <div>
-      <h1>My blogs</h1>
+      {state.length === 0 && (
+        <div>
+          <Text>You don't have any blog yet</Text>
+        </div>
+      )}
       {state.map(blog => (
         <Suspense key={blog._id} fallback={<h2>Loading...</h2>}>
           <BlogDetail {...blog} onDelete={deleteBlog} />
