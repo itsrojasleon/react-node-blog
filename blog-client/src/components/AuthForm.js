@@ -1,27 +1,59 @@
 import React, { useState } from 'react';
+import {
+  Input,
+  Form,
+  Label,
+  Button,
+  Title,
+  Text,
+  ErrorMessage
+} from '../styles/index';
 
-const AuthForm = ({ title, onSubmit, errorMessage }) => {
+const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [disabled, setDisabled] = useState(true);
 
   return (
-    <div>
-      <h3>{title}</h3>
+    <Form>
+      <Title>{title}</Title>
+      <Text>{subtitle}</Text>
       <div>
-        <input
+        <Label>Email</Label>
+        <Input
           type="text"
           placeholder="Email"
-          onChange={e => setEmail(e.target.value)}
+          value={email}
+          onChange={event => {
+            setEmail(event.target.value);
+            if (email.length > 5) setDisabled(false);
+            else setDisabled(true);
+          }}
+          required
+          name="email"
         />
-        <input
+        <Label>Password</Label>
+        <Input
           type="password"
           placeholder="Pasword"
-          onChange={e => setPassword(e.target.value)}
+          value={password}
+          onChange={event => {
+            setPassword(event.target.value);
+            if (password.length > 5) setDisabled(false);
+            else setDisabled(true);
+          }}
+          required
+          name="password"
         />
-        <button onClick={() => onSubmit({ email, password })}>{title}</button>
-        {errorMessage && <div>{errorMessage}</div>}
+        <Button
+          disabled={disabled}
+          onClick={() => onSubmit({ email, password })}
+        >
+          {title}
+        </Button>
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </div>
-    </div>
+    </Form>
   );
 };
 
