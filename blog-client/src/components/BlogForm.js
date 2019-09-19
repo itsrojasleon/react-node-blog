@@ -13,7 +13,7 @@ const BlogForm = ({ onSubmit, initialValues, text, editing }) => {
       <Label>Title</Label>
       <Input
         type="text"
-        placeholder="Title"
+        placeholder="A beatiful title"
         value={title}
         onChange={e => setTitle(e.target.value)}
       />
@@ -21,7 +21,7 @@ const BlogForm = ({ onSubmit, initialValues, text, editing }) => {
       <TextArea
         rows="15"
         cols="50"
-        placeholder="Content"
+        placeholder="Your best content here"
         value={content}
         onChange={e => setContent(e.target.value)}
       />

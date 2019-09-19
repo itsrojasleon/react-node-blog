@@ -152,3 +152,7 @@ export const Instead = styled.p`
     text-decoration: underline;
   }
 `;
+export const ErrorMessage = styled.p`
+  color: red;
+  margin-top: 10px;
+`;
