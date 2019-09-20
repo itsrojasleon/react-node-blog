@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, Content } from '../styles/index';
+import { Content } from '../styles/index';
 
 const UserProfile = ({ email, username }) => {
   return (

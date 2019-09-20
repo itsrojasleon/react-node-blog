@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useContext, useEffect } from 'react';
 import { Context as AuthContext } from '../context/AuthContext';
 import { Button, UserContainer } from '../styles/index';
+import Spinner from '../components/Spinner';
 
 const UserProfile = lazy(() => import('../components/UserProfile'));
 
@@ -12,7 +13,7 @@ const AccountScreen = () => {
   }, []);
 
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<Spinner />}>
       <UserContainer>
         <UserProfile {...state.user} />
         <Button black onClick={signout}>
