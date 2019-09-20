@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useContext, useEffect } from 'react';
 import { Context as BlogContext } from '../context/BlogContext';
-import { Link } from '@reach/router';
 import { Text } from '../styles';
 const BlogDetail = lazy(() => import('../components/BlogDetail'));
 
