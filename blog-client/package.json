@@ -2,6 +2,7 @@
   "name": "blog-client",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.17",
     "@emotion/styled": "^10.0.17",
