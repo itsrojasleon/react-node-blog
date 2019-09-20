@@ -4,6 +4,9 @@ import { navigate } from '@reach/router';
 
 const authReducer = (state, action) => {
   switch (action.type) {
+    case 'fetch_user':
+      const { email, username } = action.payload;
+      return { ...state, user: { email, username } };
     case 'signin':
       return { token: action.payload, errorMessage: '' };
     case 'signout':
@@ -22,6 +25,17 @@ const tryLocalSignin = dispatch => () => {
     dispatch({ type: 'signin', payload: token });
   } else {
     return null;
+  }
+};
+
+const fetchUser = dispatch => async () => {
+  try {
+    const {
+      data: { email, username }
+    } = await blogApi.get('/');
+    dispatch({ type: 'fetch_user', payload: { email, username } });
+  } catch (err) {
+    console.log(err);
   }
 };
 
@@ -60,6 +74,6 @@ const signout = dispatch => async () => {
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signup, signin, signout, tryLocalSignin },
-  { token: null, username: '', errorMessage: '' }
+  { tryLocalSignin, fetchUser, signup, signin, signout },
+  { token: null, user: {}, errorMessage: '' }
 );

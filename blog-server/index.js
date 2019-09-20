@@ -34,7 +34,8 @@ mongoose.connection.on('error', err =>
 );
 
 app.get('/', requireAuth, (req, res) => {
-  res.send(`Hello ${req.user.email}`);
+  const { email, username } = req.user;
+  res.send({ email, username });
 });
 
 const port = process.env.PORT || 5000;

@@ -1,13 +1,25 @@
-import React, { useContext } from 'react';
+import React, { Suspense, lazy, useContext, useEffect } from 'react';
 import { Context as AuthContext } from '../context/AuthContext';
+import { Button, UserContainer } from '../styles/index';
+
+const UserProfile = lazy(() => import('../components/UserProfile'));
 
 const AccountScreen = () => {
-  const { signout } = useContext(AuthContext);
+  const { state, fetchUser, signout } = useContext(AuthContext);
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
   return (
-    <div>
-      <div>Hello there</div>
-      <button onClick={signout}>Signout</button>
-    </div>
+    <Suspense fallback={<h1>Loading...</h1>}>
+      <UserContainer>
+        <UserProfile {...state.user} />
+        <Button black onClick={signout}>
+          Signout
+        </Button>
+      </UserContainer>
+    </Suspense>
   );
 };
 export default AccountScreen;

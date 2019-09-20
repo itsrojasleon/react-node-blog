@@ -156,3 +156,10 @@ export const ErrorMessage = styled.p`
   color: red;
   margin-top: 10px;
 `;
+
+export const UserContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
