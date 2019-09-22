@@ -49,9 +49,12 @@ const signup = dispatch => async ({ email, password, username }) => {
     const { token } = response.data;
     await window.localStorage.setItem('token', token);
     dispatch({ type: 'signin', payload: token });
-    navigate('/');
+    // navigate('/');
   } catch (err) {
-    dispatch({ type: 'error', payload: 'Something went wrong with Signup' });
+    dispatch({
+      type: 'error',
+      payload: `Something went wrong with Signup ${err}`
+    });
   }
 };
 

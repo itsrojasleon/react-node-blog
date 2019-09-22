@@ -8,16 +8,35 @@ const router = express.Router();
 router.post('/signup', async (req, res) => {
   const { email, password, username } = req.body;
 
+  let user = null;
+
+  await User.findOne({ email }, async (err, user) => {
+    user = user;
+  });
+  console.log('USERUSERUSER', user);
+
   try {
-    const user = new User({ email, password, username });
-    await user.save(err => {
-      if (err) console.log('Something went wrong saving the user!', err);
-    });
-    const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
-    res.send({ token, username });
+    if (user) res.status(422).send('Email already exists');
+    else {
+      const user = new User({ email, password, username });
+      await user.save(err => {
+        if (err) console.log('Something went wrong saving the user!', err);
+      });
+      const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
+      res.send({ token, username });
+    }
   } catch (err) {
     return res.status(422).send(err.message);
   }
+  //   const user = new User({ email, password, username });
+  //   await user.save(err => {
+  //     if (err) console.log('Something went wrong saving the user!', err);
+  //   });
+  //   const token = jwt.sign({ userId: user._id }, 'MY_SECRET_KEY');
+  //   res.send({ token, username });
+  // } catch (err) {
+  //   return res.status(422).send(err.message);
+  // }
 });
 
 router.post('/signin', async (req, res) => {
