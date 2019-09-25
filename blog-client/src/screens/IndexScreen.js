@@ -12,7 +12,7 @@ const IndexScreen = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ marginTop: '20px' }}>
       {state.length === 0 && (
         <div>
           <Text>You don't have any blog yet</Text>
