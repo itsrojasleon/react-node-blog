@@ -163,3 +163,36 @@ export const UserContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ModalContainer = styled.div`
+  background: rgb(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+export const ModalContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+  width: 60%;
+  height: 50%;
+  @media (max-width: 769px) {
+    width: 85%;
+    height: 80%;
+  }
+`;
+export const FixContainer = styled.div`
+  align-self: flex-end;
+  color: red;
+  &:hover {
+    cursor: pointer;
+  }
+`;
