@@ -174,11 +174,12 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 `;
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border-radius: 5px;
   padding: 10px;
   background-color: white;
@@ -191,8 +192,18 @@ export const ModalContent = styled.div`
 `;
 export const FixContainer = styled.div`
   align-self: flex-end;
-  color: red;
+  font-size: 20px;
   &:hover {
     cursor: pointer;
+    opacity: 0.6;
   }
+`;
+export const ModalButton = styled.button`
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  background-color: red;
+  color: white;
+  margin-bottom: 15px;
 `;

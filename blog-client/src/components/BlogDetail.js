@@ -12,9 +12,11 @@ import {
   Time,
   ModalContainer,
   ModalContent,
-  FixContainer
+  FixContainer,
+  ModalButton,
+  Text
 } from '../styles/index';
-import { FiTrash2, FiMoreVertical, FiX } from 'react-icons/fi';
+import { FiTrash2, FiEdit2, FiMoreVertical, FiX } from 'react-icons/fi';
 import Modal from './Modal';
 
 const BlogDetail = ({ title, content, _id, onDelete }) => {
@@ -38,7 +40,17 @@ const BlogDetail = ({ title, content, _id, onDelete }) => {
                 <FixContainer>
                   <FiX onClick={() => setShowPortal(false)} />
                 </FixContainer>
-                <FiTrash2 onClick={() => onDelete(_id)} /> Delete blog
+                <Text>you can do this:</Text>
+                <span>
+                  <ModalButton>
+                    <FiTrash2 onClick={() => onDelete(_id)} />
+                    <span>Delete blog</span>
+                  </ModalButton>
+                  <ModalButton>
+                    <FiEdit2 onClick={() => onDelete(_id)} />
+                    <span>Edit Blog</span>
+                  </ModalButton>
+                </span>
               </ModalContent>
             </ModalContainer>
           </Modal>
