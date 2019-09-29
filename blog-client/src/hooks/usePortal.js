@@ -32,7 +32,7 @@ export const usePortal = id => {
         parentElement.remove();
       }
     };
-  }, []);
+  }, [id]);
 
   const getRootElement = () => {
     if (!rootElement.current) {
