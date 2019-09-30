@@ -41,13 +41,20 @@ const BlogDetail = ({ title, content, _id, onDelete }) => {
                   <FiX onClick={() => setShowPortal(false)} />
                 </FixContainer>
                 <Wrapper>
-                  <ModalButton>
-                    <FiEdit2 onClick={() => onDelete(_id)} />
-                    <span style={{ marginLeft: '3px' }}>Edit Blog</span>
+                  <ModalButton black>
+                    <Link
+                      to={`/edit/${stringToUrl(title)}`}
+                      state={{ id: _id }}
+                    >
+                      <FiEdit2 style={{ color: 'white' }} />
+                      <span style={{ marginLeft: '3px', color: 'white' }}>
+                        Edit Blog
+                      </span>
+                    </Link>
                   </ModalButton>
-                  <ModalButton>
-                    <FiTrash2 onClick={() => onDelete(_id)} />
-                    <span style={{ marginLeft: '3px' }}>Delete blog</span>
+                  <ModalButton onClick={() => onDelete(_id)}>
+                    <FiTrash2 />
+                    <span style={{ marginLeft: '3px' }}>Delete Blog</span>
                   </ModalButton>
                 </Wrapper>
               </ModalContent>

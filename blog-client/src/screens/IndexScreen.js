@@ -18,6 +18,7 @@ const IndexScreen = () => {
           <Text>You don't have any blog yet</Text>
         </div>
       )}
+      {state.length > 0 && <h2>My blogs.</h2>}
       {state.map(blog => (
         <Suspense key={blog._id} fallback={<Spinner />}>
           <BlogDetail {...blog} onDelete={deleteBlog} />

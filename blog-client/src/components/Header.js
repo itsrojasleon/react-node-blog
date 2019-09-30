@@ -13,7 +13,7 @@ const Header = () => {
       getProps={({ isCurrent }) => {
         return {
           style: {
-            color: isCurrent ? 'rgb(121,104,236)' : 'rgb(50, 50, 50)'
+            color: isCurrent ? 'rgb(255,28,70)' : 'rgb(50, 50, 50)'
           }
         };
       }}
