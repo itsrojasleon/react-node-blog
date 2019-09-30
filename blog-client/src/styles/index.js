@@ -39,14 +39,23 @@ export const Box = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.2s;
+  &:hover {
+    box-shadow: 0 10px 20px 2px #e8e8e8;
+  }
 `;
 export const Content = styled.p`
   color: rgb(60, 60, 60);
 `;
 
 export const Title = styled.h2`
-  color: rgb(121, 104, 236);
+  color: black;
   margin: ${props => (props.margin ? 0 : null)};
+  transition: 0.2s;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
 `;
 export const Text = styled.p`
   color: rgb(100, 100, 100);
@@ -65,12 +74,12 @@ export const IconContainer = styled.span`
   color: rgb(130, 130, 130);
   font-weight: lighter;
   &:hover {
-    color: #e53935;
+    color: rgb(255, 28, 70);
     cursor: pointer;
   }
 `;
 export const Edit = styled.span`
-  background-color: rgb(121, 104, 236);
+  background-color: rgb(255, 28, 70);
   color: white;
   border-radius: 4px;
   padding: 10px 20px;
@@ -98,19 +107,22 @@ export const Input = styled.input`
   padding: 10px;
   border-radius: 4px;
   font-size: 17px;
-  border: 1px solid rgb(235, 235, 235);
+  border: none;
   margin-bottom: 10px;
   color: rgb(80, 80, 80);
+  background-color: rgb(239, 240, 244);
   &:focus {
     outline: 0;
   }
 `;
 export const TextArea = styled.textarea`
   width: 100%;
-  border: 1px solid rgb(235, 235, 235);
+  border: none;
   font-size: 17px;
+  border-radius: 4px;
   margin-bottom: 10px;
   color: rgb(80, 80, 80);
+  background-color: rgb(239, 240, 244);
   &:focus {
     outline: 0;
   }
@@ -122,7 +134,7 @@ export const Buttons = styled.div`
 `;
 export const Button = styled.button`
   background-color: ${props =>
-    props.black ? 'rgb(95,101,114)' : 'rgb(121, 104, 236)'};
+    props.black ? 'rgb(95,101,114)' : 'rgb(255, 28, 70)'};
   color: white;
   padding: 9px 22px;
   border: none;
@@ -182,7 +194,7 @@ export const ModalContent = styled.div`
   border-radius: 5px;
   padding: 10px;
   background-color: white;
-  width: 60%;
+  width: 50%;
   height: 40%;
   @media (max-width: 769px) {
     width: 85%;
@@ -204,7 +216,8 @@ export const ModalButton = styled.button`
   padding: 10px 20px;
   font-size: 18px;
   border: none;
-  background-color: red;
+  background-color: ${props =>
+    props.black ? 'rgb(95,101,114)' : 'rgb(255, 28, 70)'};
   color: white;
   margin-bottom: 15px;
   &:hover {

@@ -7,7 +7,7 @@ const CreateScreen = () => {
 
   return (
     <div>
-      <h3>Create Blogs</h3>
+      <h3>Create your amazing blog.</h3>
       <BlogForm onSubmit={createBlog} text="Create Blog" />
     </div>
   );
