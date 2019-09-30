@@ -14,7 +14,7 @@ import {
   ModalContent,
   FixContainer,
   ModalButton,
-  Text
+  Wrapper
 } from '../styles/index';
 import { FiTrash2, FiEdit2, FiMoreVertical, FiX } from 'react-icons/fi';
 import Modal from './Modal';
@@ -40,17 +40,16 @@ const BlogDetail = ({ title, content, _id, onDelete }) => {
                 <FixContainer>
                   <FiX onClick={() => setShowPortal(false)} />
                 </FixContainer>
-                <Text>you can do this:</Text>
-                <span>
-                  <ModalButton>
-                    <FiTrash2 onClick={() => onDelete(_id)} />
-                    <span>Delete blog</span>
-                  </ModalButton>
+                <Wrapper>
                   <ModalButton>
                     <FiEdit2 onClick={() => onDelete(_id)} />
-                    <span>Edit Blog</span>
+                    <span style={{ marginLeft: '3px' }}>Edit Blog</span>
                   </ModalButton>
-                </span>
+                  <ModalButton>
+                    <FiTrash2 onClick={() => onDelete(_id)} />
+                    <span style={{ marginLeft: '3px' }}>Delete blog</span>
+                  </ModalButton>
+                </Wrapper>
               </ModalContent>
             </ModalContainer>
           </Modal>

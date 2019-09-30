@@ -179,26 +179,27 @@ export const ModalContainer = styled.div`
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-radius: 5px;
   padding: 10px;
   background-color: white;
   width: 60%;
-  height: 50%;
+  height: 40%;
   @media (max-width: 769px) {
     width: 85%;
-    height: 80%;
+    height: 50%;
   }
 `;
 export const FixContainer = styled.div`
   align-self: flex-end;
   font-size: 20px;
+  color: rgb(150, 150, 150);
   &:hover {
     cursor: pointer;
     opacity: 0.6;
   }
 `;
 export const ModalButton = styled.button`
+  width: 100%;
   border-radius: 4px;
   padding: 10px 20px;
   font-size: 18px;
@@ -206,4 +207,15 @@ export const ModalButton = styled.button`
   background-color: red;
   color: white;
   margin-bottom: 15px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+export const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 `;
