@@ -16,7 +16,7 @@ app.use(cors());
 app.use(authRouter);
 app.use(blogRouter);
 
-const mongoUri = keys.mongoURI;
+const mongoUri = keys.MONGO_URI;
 
 if (!mongoUri) throw new Error('MongoURI was not supplied');
 
