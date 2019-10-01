@@ -2,7 +2,7 @@ import axios from 'axios';
 
 let url;
 
-if (__DEV__) {
+if (process.env.NODE_ENV === 'production') {
   url = 'https://react-node-blog-api.herokuapp.com';
 } else {
   url = 'http://localhost:5000';
