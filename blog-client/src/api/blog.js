@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+let url;
+
+if (__DEV__) {
+  url = 'https://react-node-blog-api.herokuapp.com';
+} else {
+  url = 'http://localhost:5000';
+}
+
 const instance = axios.create({
-  baseURL: 'http://localhost:5000'
+  baseURL: url
 });
 
 instance.interceptors.request.use(
