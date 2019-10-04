@@ -33,9 +33,10 @@ mongoose.connection.on('error', err =>
   console.log('Error connecting to mongo', err)
 );
 
-app.get('/', requireAuth, (req, res) => {
+app.get('/', requireAuth, (req, res, next) => {
   const { email, username } = req.user;
   res.send({ email, username });
+  next();
 });
 
 const port = process.env.PORT || 5000;
