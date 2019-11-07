@@ -22,6 +22,7 @@ const AuthForm = ({ title, subtitle, onSubmit, errorMessage }) => {
         <Label>Email</Label>
         <Input
           type="text"
+          autoComplete="off"
           placeholder="Email"
           value={email}
           onChange={event => setEmail(event.target.value)}
